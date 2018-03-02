@@ -1,4 +1,10 @@
+# Qt Creator import proj files
+*.config
+*.creator
+*.files
+*.includes
 
+# Meson build directories
 build*
 
 # Prerequisites
