@@ -2,12 +2,16 @@
 #include <chrono>
 #include <ctime>
 
+#include "person.h"
+
 const int hundred_percent = 100;
 
 int main()
 {
     const int life_expectancy = 100; // in Earth years
     // 80 years sounds more realistic in general.
+
+    Person person;
 
     // Get the birth date of the person
     std::cout << "Enter your birth ...";
