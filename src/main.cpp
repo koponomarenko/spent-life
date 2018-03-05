@@ -11,8 +11,6 @@ int main()
     const int life_expectancy = 100; // in Earth years
     // 80 years sounds more realistic in general.
 
-    Person person;
-
     // Get the birth date of the person
     std::cout << "Enter your birth ...";
     std::cout << "year";
@@ -24,6 +22,7 @@ int main()
     std::cout << "day";
     int bith_day = 29;
     //cin >> birth_day;
+    Person person(birth_year, birth_month, bith_day);
     std::cout << std::endl;
 
     // Get the current date

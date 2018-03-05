@@ -1,6 +1,7 @@
 # Qt Creator import proj files
 *.config
 *.creator
+*.creator.user
 *.files
 *.includes
 
