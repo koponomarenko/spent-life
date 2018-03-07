@@ -1,6 +1,8 @@
 #ifndef PERSON_H
 #define PERSON_H
 
+#include <chrono>
+
 class Person
 {
 public:
@@ -10,9 +12,10 @@ public:
 private:
     Person();
 
-    int birth_year;
-    int birth_month;
-    int bith_day;
+    int birth_year_;
+    int birth_month_;
+    int bith_day_;
+    std::chrono::system_clock::time_point birth_time_;
 };
 
 #endif // PERSON_H
