@@ -5,11 +5,14 @@ class Person
 {
 public:
     Person(int, int, int);
+    int get_age() const;
+
+private:
+    Person();
+
     int birth_year;
     int birth_month;
     int bith_day;
-private:
-    Person();
 };
 
 #endif // PERSON_H

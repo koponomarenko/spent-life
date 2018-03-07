@@ -1,8 +1,5 @@
-#include <iostream>
-#include <chrono>
-#include <ctime>
-
 #include "person.h"
+#include <iostream>
 
 const int hundred_percent = 100;
 
@@ -22,26 +19,12 @@ int main()
     std::cout << "day";
     int bith_day = 29;
     //cin >> birth_day;
+    std::cout << std::endl;
+
+
+    std::cout << std::endl;
     Person person(birth_year, birth_month, bith_day);
-    std::cout << std::endl;
-
-    // Get the current date
-    std::chrono::system_clock::time_point today = std::chrono::system_clock::now();
-    
-    // TODO: rewrite this piece
-    std::tm timeinfo = {0};
-    timeinfo.tm_year = birth_year - 1900; // years since 1900
-    timeinfo.tm_mon = birth_month - 1; // January is 0
-    timeinfo.tm_mday = bith_day;
-    std::time_t tt = std::mktime(&timeinfo);
-    std::chrono::system_clock::time_point birth_date = std::chrono::system_clock::from_time_t(tt);
-
-    std::chrono::system_clock::duration spent_life = today - birth_date;
-    // convert to number of years
-    typedef std::chrono::duration<int, std::ratio<60*60*24*365>> years_t;
-    int spent_years = std::chrono::duration_cast<years_t>(spent_life).count();
-
-    std::cout << std::endl;
+    int spent_years = person.get_age();
     std::cout << "You've been living for " << spent_years << " years" << std::endl;
     std::cout << "It is " << spent_years / (life_expectancy / hundred_percent) << "% of " << life_expectancy << " years of life expectancy." << std::endl;
 
