@@ -3,11 +3,13 @@
 
 #include <chrono>
 
+enum class Age_units { years, months, days, hours, minutes, seconds };
+
 class Person
 {
 public:
     Person(int, int, int);
-    int get_age() const;
+    int get_age(Age_units) const;
 
 private:
     Person();
