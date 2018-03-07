@@ -1,13 +1,18 @@
 #include "person.h"
 #include <iostream>
 
-const int hundred_percent = 100;
+Person create_person();
+void show_spent_life(int spent_years);
 
 int main()
 {
-    const int life_expectancy = 100; // in Earth years
-    // 80 years sounds more realistic in general.
+    Person person = create_person();
+    int spent_years = person.get_age();
+    show_spent_life(spent_years);
+}
 
+Person create_person()
+{
     // Get the birth date of the person
     std::cout << "Enter your birth ...";
     std::cout << "year";
@@ -21,13 +26,18 @@ int main()
     //cin >> birth_day;
     std::cout << std::endl;
 
+    return Person(birth_year, birth_month, bith_day);
+}
 
-    std::cout << std::endl;
-    Person person(birth_year, birth_month, bith_day);
-    int spent_years = person.get_age();
+void show_spent_life(int spent_years)
+{
+    const int life_expectancy = 100; // in Earth years
+    // 80 years sounds more realistic in general.
+
     std::cout << "You've been living for " << spent_years << " years" << std::endl;
-    std::cout << "It is " << spent_years / (life_expectancy / hundred_percent) << "% of " << life_expectancy << " years of life expectancy." << std::endl;
-
+    const int hundred_percent = 100;
+    std::cout << "It is " << spent_years / (life_expectancy / hundred_percent)
+              << "% of " << life_expectancy << " years of life expectancy." << std::endl;
 
     std::cout << std::endl;
     // show in matrix 10x10
