@@ -8,6 +8,7 @@ void show_spent_life(const Person & person);
 int main()
 {
     Person person = create_person();
+    //Person person = Person(1987, 6, 29);
     int spent_years = person.get_age(Age_units::years);
     show_spent_life(spent_years);
     //show_spent_life(person);

@@ -1,18 +1,11 @@
 #include "person.h"
-#include <ctime>
+#include "date.h"
 
 Person::Person(int birth_year, int birth_month, int bith_day)
     : birth_year_(birth_year), birth_month_(birth_month), bith_day_(bith_day)
 {
-    // Set the birthday time
-    std::tm timeinfo = {0};
-    timeinfo.tm_year = birth_year_ - 1900;  // years since 1900
-    timeinfo.tm_mon = birth_month_ - 1;     // months since January    0-11
-    timeinfo.tm_mday = bith_day_;           // day of the month        1-31
-    timeinfo.tm_hour = 0;                   // hours since midnight    0-23
-    timeinfo.tm_min = 0;                    // minutes after the hour  0-59
-    std::time_t tt = std::mktime(&timeinfo);
-    birth_time_ = std::chrono::system_clock::from_time_t(tt);
+    date::year_month_day birthday = date::year{birth_year_}/birth_month_/bith_day_;
+    birth_time_ = date::sys_days{birthday}; // high precision is specified differently on each platform.
 }
 
 int Person::get_age(Age_units age_units) const
@@ -27,7 +20,8 @@ int Person::get_age(Age_units age_units) const
     typedef std::chrono::duration<int, std::ratio<60*60*24*365>> Years;
 
     int age = 0;
-    switch (age_units) {
+    switch (age_units)
+    {
     case Age_units::years:
         age = std::chrono::duration_cast<Years>(spent_life).count();
         break;
